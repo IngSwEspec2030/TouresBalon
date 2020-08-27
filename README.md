@@ -3,7 +3,7 @@ Somos una agencia de viajes especializada en planes turísticos donde el eje cen
 
 A través de nuestro excelente portafolio de servicio, queremos lograr un posicionamiento y un respeto en el mercado nacional como integrador de paquetes turísticos relacionados con el deporte.)
 
-Para mayor detalle sobre el _SOFTWARE PROJECT MANAGEMENT PLAN_ puede revisar nuestra [Wiki](#https://github.com/IngSwEspec2030/TouresBalon/wiki)
+Para mayor detalle sobre el _SOFTWARE PROJECT MANAGEMENT PLAN_ puede revisar nuestra [Wiki](https://github.com/IngSwEspec2030/TouresBalon/wiki)
 
 ## Modelo de Negocio
 ![alt text](https://github.com/jsvq85/imagenes/blob/master/canvas.png?raw=true)
