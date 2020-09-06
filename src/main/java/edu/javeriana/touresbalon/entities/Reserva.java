@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Setter(value = AccessLevel.PACKAGE)
 @Getter
-@Table(name = "PRODUCTO")
+@Table(name = "RESERVA")
 @Data
 public class Reserva {
 
@@ -54,7 +54,7 @@ public class Reserva {
     @Column(name = "COMENTARIOS")
     private String comentarios;
 
-    @ManyToMany(mappedBy = "productos")
+    @ManyToMany(mappedBy = "reservas")
     private List<Producto> productos;
 
 }

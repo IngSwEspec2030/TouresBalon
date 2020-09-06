@@ -16,6 +16,7 @@ import java.util.List;
 @Getter
 @Table(name = "PRODUCTO")
 @Data
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Producto {
     @Id
     @Column(name = "ID_PRODUCTO")
@@ -59,7 +60,7 @@ public class Producto {
             joinColumns = {@JoinColumn(name = "ID_PRODUCTO")},
             inverseJoinColumns = {@JoinColumn(name = "ID_RESERVA")}
     )
-    private List<Reserva> productos;
+    private List<Reserva> reservas;
 
     @ManyToOne
     @JoinColumn(name = "idProveedor", referencedColumnName = "ID_PROVEEDOR", nullable = false)
