@@ -20,9 +20,9 @@ import java.io.IOException;
 public class ProductosController {
 
 
-    @Operation(summary = "Upload a file")
+    @Operation(summary = "Crear un producto")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "File uploaded successfully",
+            @ApiResponse(responseCode = "200", description = "Producto creado satisfactoriamente",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = String.class))}),
             @ApiResponse(responseCode = "400", description = "Invalid file type",
