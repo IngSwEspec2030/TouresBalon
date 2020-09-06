@@ -3,14 +3,14 @@ package edu.javeriana.touresbalon.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
+@Table(name="PRODUCTO")
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Setter(value = AccessLevel.PACKAGE)
 @Getter
-@Table(name = "TRANSPORTE")
+@DiscriminatorValue("TRANSPORTE")
 @Data
 public class Transporte extends Producto {
 
@@ -25,10 +25,6 @@ public class Transporte extends Producto {
     @Basic
     @Column(name = "CIUDAD_DESTINO")
     private String ciudadDestino;
-
-    @Basic
-    @Column(name = "VALOR")
-    private BigDecimal valor;
 
     @OneToOne
     @JoinColumn(name = "idTipoTransporte", referencedColumnName = "ID_TIPO_TRANSPORTE", nullable = false)

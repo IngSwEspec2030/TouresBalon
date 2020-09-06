@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface ProductoService {
 
-    void crearProducto(Producto producto);
+    Producto crearProducto(Producto producto);
 
     void eliminarProducto(Producto producto);
 

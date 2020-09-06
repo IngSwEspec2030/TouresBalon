@@ -11,16 +11,17 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class ProdcutoServiceImpl implements ProductoService {
+public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
     private ProductoRepository productoRepository;
 
     @Override
-    public void crearProducto(Producto producto) {
+    public Producto crearProducto(Producto producto) {
 
         productoRepository.save(producto);
 
+        return producto;
     }
     @Override
     public void eliminarProducto(Producto producto) {

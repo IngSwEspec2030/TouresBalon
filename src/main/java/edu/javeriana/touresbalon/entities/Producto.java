@@ -9,19 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "PRODUCTO")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TIPO_PRODUCTO", discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue(value="PRODUCTO")
 @Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Setter(value = AccessLevel.PACKAGE)
 @Getter
-@Table(name = "PRODUCTO")
 @Data
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Producto {
     @Id
     @Column(name = "ID_PRODUCTO")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int idProducto;
+    private Long idProducto;
 
     @Basic
     @Column(name = "NOMBRE")
@@ -44,7 +46,7 @@ public class Producto {
     private boolean estado;
 
     @Basic
-    @Column(name = "FECHA REGISTO")
+    @Column(name = "FECHA_REGISTO")
     private Timestamp fechaRegistro;
 
     @Basic
