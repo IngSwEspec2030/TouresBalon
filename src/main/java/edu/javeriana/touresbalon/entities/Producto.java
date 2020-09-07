@@ -1,29 +1,29 @@
 package edu.javeriana.touresbalon.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "PRODUCTO")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TIPO_PRODUCTO", discriminatorType=DiscriminatorType.STRING)
-@DiscriminatorValue(value="PRODUCTO")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-@Setter(value = AccessLevel.PACKAGE)
+@Setter(value = AccessLevel.PUBLIC)
 @Getter
 @Data
 public class Producto {
     @Id
     @Column(name = "ID_PRODUCTO")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long idProducto;
+    private int idProducto;
 
     @Basic
     @Column(name = "NOMBRE")
@@ -64,8 +64,9 @@ public class Producto {
     )
     private List<Reserva> reservas;
 
+    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="idProveedor", scope=Proveedor.class)
     @ManyToOne
-    @JoinColumn(name = "idProveedor", referencedColumnName = "ID_PROVEEDOR", nullable = false)
+    @JoinColumn(name = "idProveedor", referencedColumnName = "ID_PROVEEDOR")
     private Proveedor proveedor;
 
 

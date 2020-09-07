@@ -11,7 +11,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-@Setter(value = AccessLevel.PACKAGE)
+@Setter(value = AccessLevel.PUBLIC)
 @Getter
 @Table(name = "PROVEEDOR")
 @Data
@@ -42,7 +42,7 @@ public class Proveedor {
     @Column(name = "ACTIVO")
     private boolean activo;
 
-    @OneToMany(mappedBy = "idProducto", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "proveedor")
     private List<Producto> productoList;
 
 }

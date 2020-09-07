@@ -1,6 +1,7 @@
 package edu.javeriana.touresbalon.service.impl;
 
 import edu.javeriana.touresbalon.entities.Producto;
+import edu.javeriana.touresbalon.exceptions.NotFoundException;
 import edu.javeriana.touresbalon.repository.ProductoRepository;
 import edu.javeriana.touresbalon.service.ProductoService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +35,18 @@ public class ProductoServiceImpl implements ProductoService {
     public Optional<Producto> consultarProducto(int id) {
 
         Optional<Producto> producto = productoRepository.findById(id);
+        if(producto.isEmpty())
+            throw new NotFoundException("Producto no encontrado");
         return producto;
 
+    }
+
+    @Override
+    public Iterable<Producto> consultarListaProducto() {
+        Iterable<Producto> listaProductos = productoRepository.findAll();
+        if(!listaProductos.iterator().hasNext())
+            throw new NotFoundException("No hay productos en la lista");
+        return listaProductos;
     }
 
 }

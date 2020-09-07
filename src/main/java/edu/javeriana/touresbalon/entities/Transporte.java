@@ -5,12 +5,11 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name="PRODUCTO")
+@Table(name="TRANSPORTE")
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-@Setter(value = AccessLevel.PACKAGE)
+@Setter(value = AccessLevel.PUBLIC)
 @Getter
-@DiscriminatorValue("TRANSPORTE")
 @Data
 public class Transporte extends Producto {
 
@@ -27,6 +26,6 @@ public class Transporte extends Producto {
     private String ciudadDestino;
 
     @OneToOne
-    @JoinColumn(name = "idTipoTransporte", referencedColumnName = "ID_TIPO_TRANSPORTE", nullable = false)
+    @JoinColumn(name = "idTipoTransporte", referencedColumnName = "ID_TIPO_TRANSPORTE")
     private TipoTransporte tipoTransporte;
 }

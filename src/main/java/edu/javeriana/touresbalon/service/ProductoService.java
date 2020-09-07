@@ -11,4 +11,6 @@ public interface ProductoService {
     void eliminarProducto(Producto producto);
 
     Optional<Producto> consultarProducto(int id);
+
+    Iterable<Producto> consultarListaProducto();
 }

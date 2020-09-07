@@ -1,7 +1,9 @@
 package edu.javeriana.touresbalon.controller;
 
 import edu.javeriana.touresbalon.entities.Producto;
+import edu.javeriana.touresbalon.entities.Transporte;
 import edu.javeriana.touresbalon.service.ProductoService;
+import edu.javeriana.touresbalon.service.TransporteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,83 +15,81 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/producto")
-public class ProductoController {
-
+@RequestMapping("/api/v1/transporte")
+public class TransporteController {
 
     @Autowired
-    private ProductoService productoService;
+    private TransporteService transporteService;
 
-    @Operation(summary = "Guarda un nuevo producto")
+    @Operation(summary = "Guarda un nuevo transporte")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Producto gudardado satisfactoriamente",
+            @ApiResponse(responseCode = "200", description = "Transporte gudardado satisfactoriamente",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = String.class))}),
             @ApiResponse(responseCode = "400", description = "Peticion incorrecta",
                     content = @Content),
-            @ApiResponse(responseCode = "500", description = "Error guardando el producto",
+            @ApiResponse(responseCode = "500", description = "Error guardando transporte",
                     content = @Content)})
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> crearProducto(@RequestBody Producto producto) {
+    public ResponseEntity<?> crearTransporte(@RequestBody Transporte transporte) {
 
-        Producto result = productoService.crearProducto(producto);
+        Transporte result = transporteService.crearTransporte(transporte);
         return ResponseEntity.ok(result);
     }
 
-    @Operation(summary = "Obtiene un producto")
+    @Operation(summary = "Obtiene un transporte")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Se obtuvo el producto satisfactoriamente",
+            @ApiResponse(responseCode = "200", description = "Se obtuvo el transporte satisfactoriamente",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = String.class))}),
             @ApiResponse(responseCode = "400", description = "Peticion incorrecta",
                     content = @Content),
-            @ApiResponse(responseCode = "404", description = "Producto no encontrado",
+            @ApiResponse(responseCode = "404", description = "Transporte no encontrado",
                     content = @Content),
-            @ApiResponse(responseCode = "500", description = "Error obteniendo el producto",
+            @ApiResponse(responseCode = "500", description = "Error obteniendo el transporte",
                     content = @Content)})
-    @GetMapping(value = "/{productoId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> consultarProducto(@PathVariable @NotNull String productoId) {
+    @GetMapping(value = "/{transporteId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> consultarProducto(@PathVariable @NotNull String transporteId) {
 
-        Optional<Producto> result = productoService.consultarProducto(Integer.valueOf(productoId));
+        Optional<Transporte> result = transporteService.consultarTransporte(Integer.valueOf(transporteId));
         return ResponseEntity.ok(result);
     }
 
-    @Operation(summary = "Obtiene lista de productos")
+    @Operation(summary = "Obtiene lista de transportes")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Se obtuvo lista de productos satisfactoriamente",
+            @ApiResponse(responseCode = "200", description = "Se obtuvo lista de transportes satisfactoriamente",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = String.class))}),
             @ApiResponse(responseCode = "400", description = "Peticion incorrecta",
                     content = @Content),
-            @ApiResponse(responseCode = "404", description = "Productos no encontrados",
+            @ApiResponse(responseCode = "404", description = "Transportes no encontrados",
                     content = @Content),
-            @ApiResponse(responseCode = "500", description = "Error obteniendo lista de productos",
+            @ApiResponse(responseCode = "500", description = "Error obteniendo lista de transportes",
                     content = @Content)})
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> consultarListaProductos() {
+    public ResponseEntity<?> consultarListaTransportes() {
 
-        Iterable<Producto> result = productoService.consultarListaProducto();
+        Iterable<Transporte> result = transporteService.consultarListaTransportes();
         return ResponseEntity.ok(result);
     }
 
-    @Operation(summary = "Elimina un producto")
+    @Operation(summary = "Elimina un transporte")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Producto eliminado satisfactoriamente",
+            @ApiResponse(responseCode = "200", description = "Transporte eliminado satisfactoriamente",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = String.class))}),
             @ApiResponse(responseCode = "400", description = "Peticion incorrecta",
                     content = @Content),
-            @ApiResponse(responseCode = "500", description = "Error eliminando el producto",
+            @ApiResponse(responseCode = "500", description = "Error eliminando transporte",
                     content = @Content)})
     @DeleteMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> eliminarProducto(@RequestBody Producto producto) {
+    public ResponseEntity<?> eliminarTransporte(@RequestBody Transporte transporte) {
 
-        productoService.eliminarProducto(producto);
-        return ResponseEntity.ok("Producto eliminado correctamente");
+        transporteService.eliminarTransporte(transporte);
+        return ResponseEntity.ok("Transporte eliminado correctamente");
     }
 
 }

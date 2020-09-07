@@ -5,12 +5,11 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name="PRODUCTO")
+@Table(name="ALOJAMIENTO")
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-@Setter(value = AccessLevel.PACKAGE)
+@Setter(value = AccessLevel.PUBLIC)
 @Getter
-@DiscriminatorValue("ALOJAMIENTO")
 @Data
 public class Alojamiento extends Producto {
 
