@@ -3,17 +3,23 @@ package edu.javeriana.touresbalon.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
-@Builder
 @Data
-public class EspectaculoDTO {
+@Builder
+public class DetailEspectaculoDTO {
 
     private int id;
     private String image;
+    private String imageLocalities;
     private String name;
     private String description;
+    private String place;
+    private String city;
+    private Date date;
     private String category;
-    private List<Double> price;
+    private long capacity;
+    private List<LocacionDTO> localities;
 
 }

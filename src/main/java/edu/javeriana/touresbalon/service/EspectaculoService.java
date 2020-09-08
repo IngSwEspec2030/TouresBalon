@@ -1,5 +1,6 @@
 package edu.javeriana.touresbalon.service;
 
+import edu.javeriana.touresbalon.dto.DetailEspectaculoDTO;
 import edu.javeriana.touresbalon.dto.EspectaculoDTO;
 import edu.javeriana.touresbalon.entities.Espectaculo;
 
@@ -12,7 +13,7 @@ public interface EspectaculoService {
 
     void eliminarEspectaculo(Espectaculo espectaculo);
 
-    Optional<Espectaculo> consultarEspectaculo(int id);
+    DetailEspectaculoDTO consultarEspectaculo(int id);
 
     List<EspectaculoDTO> consultarListaEspectaculos();
 }

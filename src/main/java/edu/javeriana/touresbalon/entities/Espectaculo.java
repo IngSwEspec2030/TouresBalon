@@ -3,6 +3,7 @@ package edu.javeriana.touresbalon.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="ESPECTACULO")
@@ -17,11 +18,24 @@ public class Espectaculo extends Producto {
     @Column(name = "CIUDAD")
     private String ciudad;
 
+    @Basic
+    @Column(name = "LUGAR")
+    private String lugar;
+
     @OneToOne
     @JoinColumn(name = "idTipoEspectaculo", referencedColumnName = "ID_TIPO_ESPECTACULO", nullable = false)
     private TipoEspectaculo tipoEspectaculo;
 
-    @OneToOne
-    @JoinColumn(name = "idUbicacion", referencedColumnName = "ID_UBICACION", nullable = false)
-    private Ubicacion ubicacion;
+    @Basic
+    @Column(name = "FECHA")
+    private Timestamp fecha;
+
+    @Basic
+    @Column(name = "AFORO")
+    private Long aforo;
+
+    @Basic
+    @Column(name = "IMAGEN_LUGAR")
+    private String imagenLugar;
+
 }

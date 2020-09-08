@@ -1,6 +1,8 @@
 package edu.javeriana.touresbalon.service.impl;
 
+import edu.javeriana.touresbalon.dto.DetailEspectaculoDTO;
 import edu.javeriana.touresbalon.dto.EspectaculoDTO;
+import edu.javeriana.touresbalon.dto.LocacionDTO;
 import edu.javeriana.touresbalon.entities.Espectaculo;
 import edu.javeriana.touresbalon.entities.LocalidadEspectaculo;
 import edu.javeriana.touresbalon.exceptions.NotFoundException;
@@ -43,12 +45,33 @@ public class EspectaculoServiceImpl implements EspectaculoService {
     }
 
     @Override
-    public Optional<Espectaculo> consultarEspectaculo(int id) {
+    public DetailEspectaculoDTO consultarEspectaculo(int id) {
         Optional<Espectaculo> espectaculo = espectaculoRepository.findById(id);
         if (espectaculo.isEmpty())
             throw new NotFoundException("Espectaculo no encontrado");
-        return espectaculo;
 
+        List<LocalidadEspectaculo> localidades = getLocalidadesByEvent(espectaculo.get());
+
+        return DetailEspectaculoDTO.builder()
+                .id(espectaculo.get().getIdProducto())
+                .image(espectaculo.get().getImagen())
+                .imageLocalities(espectaculo.get().getImagenLugar())
+                .name(espectaculo.get().getNombre())
+                .description(espectaculo.get().getDescripcion())
+                .place(espectaculo.get().getLugar())
+                .city(espectaculo.get().getCiudad())
+                .date(espectaculo.get().getFecha())
+                .category(espectaculo.get().getTipoEspectaculo().getNombre())
+                .capacity(espectaculo.get().getAforo())
+                .localities(
+                        localidades.stream().map(
+                                e -> LocacionDTO.builder()
+                                        .id(e.getLocalidad().getIdLocalidad())
+                                        .name(e.getNombreLocalidad())
+                                        .price(e.getPrecio())
+                                        .build())
+                                .collect(Collectors.toList()))
+                .build();
     }
 
     @Override

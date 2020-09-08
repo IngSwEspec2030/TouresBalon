@@ -1,5 +1,6 @@
 package edu.javeriana.touresbalon.controller;
 
+import edu.javeriana.touresbalon.dto.DetailEspectaculoDTO;
 import edu.javeriana.touresbalon.dto.EspectaculoDTO;
 import edu.javeriana.touresbalon.entities.Espectaculo;
 import edu.javeriana.touresbalon.entities.Transporte;
@@ -56,7 +57,7 @@ public class EspectaculoController {
     @GetMapping(value = "/{espectaculoId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> consultarEspectaculo(@PathVariable @NotNull String espectaculoId) {
 
-        Optional<Espectaculo> result = espectaculoService.consultarEspectaculo(Integer.valueOf(espectaculoId));
+        DetailEspectaculoDTO result = espectaculoService.consultarEspectaculo(Integer.valueOf(espectaculoId));
         return ResponseEntity.ok(result);
     }
 
@@ -71,7 +72,7 @@ public class EspectaculoController {
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Error obteniendo lista de espectaculos",
                     content = @Content)})
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> consultarListaEspectaculos() {
         List<EspectaculoDTO> result = espectaculoService.consultarListaEspectaculos();
         return ResponseEntity.ok(result);

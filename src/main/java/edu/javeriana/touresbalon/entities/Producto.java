@@ -38,10 +38,6 @@ public class Producto {
     private int cantidad;
 
     @Basic
-    @Column(name = "PRECIO")
-    private BigDecimal precio;
-
-    @Basic
     @Column(name = "ESTADO")
     private boolean estado;
 
