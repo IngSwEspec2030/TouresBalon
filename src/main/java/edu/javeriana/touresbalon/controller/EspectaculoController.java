@@ -1,5 +1,6 @@
 package edu.javeriana.touresbalon.controller;
 
+import edu.javeriana.touresbalon.dto.EspectaculoDTO;
 import edu.javeriana.touresbalon.entities.Espectaculo;
 import edu.javeriana.touresbalon.entities.Transporte;
 import edu.javeriana.touresbalon.service.EspectaculoService;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -71,8 +73,7 @@ public class EspectaculoController {
                     content = @Content)})
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> consultarListaEspectaculos() {
-
-        Iterable<Espectaculo> result = espectaculoService.consultarListaEspectaculos();
+        List<EspectaculoDTO> result = espectaculoService.consultarListaEspectaculos();
         return ResponseEntity.ok(result);
     }
 

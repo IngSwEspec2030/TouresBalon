@@ -1,7 +1,9 @@
 package edu.javeriana.touresbalon.service;
 
+import edu.javeriana.touresbalon.dto.EspectaculoDTO;
 import edu.javeriana.touresbalon.entities.Espectaculo;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface EspectaculoService {
@@ -12,5 +14,5 @@ public interface EspectaculoService {
 
     Optional<Espectaculo> consultarEspectaculo(int id);
 
-    Iterable<Espectaculo> consultarListaEspectaculos();
+    List<EspectaculoDTO> consultarListaEspectaculos();
 }
