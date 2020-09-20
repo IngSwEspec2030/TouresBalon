@@ -1,10 +1,9 @@
 package edu.javeriana.touresbalon.entities;
 
-import edu.javeriana.touresbalon.dto.ConvenioDTO;
 import edu.javeriana.touresbalon.model.HeaderService;
+import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @SqlResultSetMapping(name = "encabezadoMapping",
         classes = {
@@ -21,62 +20,28 @@ import java.util.Objects;
 @NamedNativeQueries(value = {
         @NamedNativeQuery(name = "encabezadosQuery",
                 query = "Select nombre as headerName, valor as headerValue" +
-                        " From conveniosDB.encabezados" +
+                        " From ingsoft.encabezados" +
                         " Where configuracion_Id = :configurationId",
                 resultSetMapping = "encabezadoMapping")
 })
 
 @Entity
-@Table(name = "encabezados", schema = "conveniosDB", catalog = "")
+@Table(name = "encabezado")
+@Data
 public class Encabezado {
-  @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Integer encabezadoId;
-  private String nombre;
-  private String valor;
 
-  @Id
-  @Column(name = "encabezado_id")
-  public Integer getEncabezadoId() {
-    return encabezadoId;
-  }
+    @Id
+    @Column(name = "encabezado_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer encabezadoId;
+    @Basic
+    @Column(name = "nombre")
+    private String nombre;
+    @Basic
+    @Column(name = "valor")
+    private String valor;
+    @OneToOne
+    @JoinColumn(name = "configuracionId", referencedColumnName = "CONFIGURACION_ID", nullable = false)
+    private Configuracion configuracion;
 
-  public void setEncabezadoId(Integer encabezadoId) {
-    this.encabezadoId = encabezadoId;
-  }
-
-  @Basic
-  @Column(name = "nombre")
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
-
-  @Basic
-  @Column(name = "valor")
-  public String getValor() {
-    return valor;
-  }
-
-  public void setValor(String valor) {
-    this.valor = valor;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Encabezado that = (Encabezado) o;
-    return Objects.equals(encabezadoId, that.encabezadoId) &&
-            Objects.equals(nombre, that.nombre) &&
-            Objects.equals(valor, that.valor);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(encabezadoId, nombre, valor);
-  }
 }

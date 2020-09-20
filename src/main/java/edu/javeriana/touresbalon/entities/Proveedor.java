@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -44,5 +43,8 @@ public class Proveedor {
 
     @OneToMany(mappedBy = "proveedor")
     private List<Producto> productoList;
+
+    @OneToMany(mappedBy = "proveedor")
+    private List<Configuracion> configuracionList;
 
 }
