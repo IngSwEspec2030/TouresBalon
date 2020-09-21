@@ -8,6 +8,7 @@ import edu.javeriana.touresbalon.exceptions.PaymentNotFoundException;
 import edu.javeriana.touresbalon.model.*;
 import edu.javeriana.touresbalon.repository.ConvenioRepository;
 import edu.javeriana.touresbalon.repository.UsuarioRepository;
+import edu.javeriana.touresbalon.service.ConvenioService;
 import edu.javeriana.touresbalon.service.PagoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ public class PagoServiceImpl implements PagoService {
   private UsuarioRepository usuarioRepository;
   @Autowired
   private ConvenioRepository convenioRepository;
+  @Autowired
+  private ConvenioService convenioService;
 
   public PagoServiceImpl() {
 
@@ -28,9 +31,9 @@ public class PagoServiceImpl implements PagoService {
 
   private ServiceDescription getConfiguration(Integer idConvenio, String operacion) {
     // Se obtiene la información del convenio
-    Optional<ConvenioObject> co = convenioRepository.getConvenioById2(idConvenio);
+    ConvenioObject co = convenioService.getInfoConvenio(idConvenio);
     // Se obtiene la configuración para el servicio de consulta.
-    ServiceDescription sd = co.get().getConfiguracion().stream().filter(x -> x.getOperation().equals(operacion)).findFirst().orElse(null);
+    ServiceDescription sd = co.getConfiguracion().stream().filter(x -> x.getOperation().equals(operacion)).findFirst().orElse(null);
     if (sd == null) {
       throw new PaymentNotFoundException("El convenio de recaudo especificado no existe");
     }

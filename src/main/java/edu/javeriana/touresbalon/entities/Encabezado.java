@@ -20,7 +20,7 @@ import javax.persistence.*;
 @NamedNativeQueries(value = {
         @NamedNativeQuery(name = "encabezadosQuery",
                 query = "Select nombre as headerName, valor as headerValue" +
-                        " From ingsoft.encabezados" +
+                        " From ingsoft.encabezado" +
                         " Where configuracion_Id = :configurationId",
                 resultSetMapping = "encabezadoMapping")
 })

@@ -31,7 +31,7 @@ import javax.persistence.*;
                         "       payload as requestPayload, reference_path as referencePath, valor_path as valuePath," +
                         "       mensaje_path as messagePath" +
                         "  From ingsoft.configuracion" +
-                        "  Where partner_id = :partnerId",
+                        "  Where id_proveedor = :partnerId",
                 resultSetMapping = "configurationMapping")
 })
 
@@ -71,4 +71,7 @@ public class Configuracion {
     @ManyToOne
     @JoinColumn(name = "idProveedor", referencedColumnName = "ID_PROVEEDOR")
     private Proveedor proveedor;
+    /*@ManyToOne
+    @JoinColumn(name = "idConvenio", referencedColumnName = "partner_id")
+    private Convenio convenio;*/
 }

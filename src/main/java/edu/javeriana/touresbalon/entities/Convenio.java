@@ -65,5 +65,7 @@ public class Convenio {
     @Basic
     @Column(name = "description")
     private String description;
+    /*@OneToMany(mappedBy = "convenio")
+    private List<Configuracion> configuracionList;*/
 
 }
