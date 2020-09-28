@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 @Entity
 @Builder(toBuilder = true)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Table(name = "USUARIO")
 @Data
 public class Usuario {

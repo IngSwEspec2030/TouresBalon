@@ -23,8 +23,6 @@ public class GenericSoapClient extends AGenericClient {
     HttpEntity<String> formEntity = new HttpEntity<>(info.getRequestPayload(), headers);
     ResponseEntity<String> rta = rt.exchange(info.getServiceUrl(), HttpMethod.POST, formEntity, String.class);
     String aux = rta.getBody();
-    aux = aux.substring(aux.indexOf("<S:Body") + 8, aux.indexOf("</S:Body"));
-    System.out.println(aux);
     return processRta(new XmlMapper(), aux, info.getReferencePath(), info.getValuePath(), info.getMessagePath());
   }
 
