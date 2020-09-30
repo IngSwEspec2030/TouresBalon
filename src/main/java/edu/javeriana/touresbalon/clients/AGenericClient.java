@@ -35,12 +35,11 @@ public abstract class AGenericClient {
 
   protected PagoResponse processRta(ObjectMapper mapper, String data, String pathReference, String pathValue, String pathMessage) {
     PagoResponse result = new PagoResponse();
-    String initialPath = "Body.Resultado.";
     try {
       JsonNode rootNode = mapper.readTree(data);
-      result.setReferencia(processPath(rootNode, initialPath+pathReference));
-      result.setValor(processPath(rootNode, initialPath+pathValue));
-      result.setMensaje(processPath(rootNode, initialPath+pathMessage));
+      result.setReferencia(processPath(rootNode, pathReference));
+      result.setValor(processPath(rootNode, pathValue));
+      result.setMensaje(processPath(rootNode, pathMessage));
       return result;
     } catch (JsonProcessingException e) {
       e.printStackTrace();
