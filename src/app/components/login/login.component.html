@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form [formGroup]="form" (ngSubmit)="login()" novalidate class="login-container">
+  <form [formGroup]="form" novalidate class="login-container">
     <ion-list class="head">
       <img class="img-bic" src="assets/icon/favicon.png" alt="Toures Balón" />
     </ion-list>
@@ -16,10 +16,6 @@
     <ion-item class="field">
       <ion-label position="floating">Usuario</ion-label>
       <ion-input name="user" formControlName="user" type="text" [(ngModel)]="user"></ion-input>
-    </ion-item>
-
-    <ion-item *ngIf="form.get('user').errors && form.get('user').dirty ">
-      <p class="danger-text" *ngIf="form.get('user').hasError('required')">Este campo es requerido</p>
     </ion-item>
 
     <ion-item class="field">
