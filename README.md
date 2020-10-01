@@ -38,11 +38,22 @@ $ java -jar Toutes-Balon-0.0.1-SNAPSHOT.jar
 ### Ejecución local del proyecto - Docker
 ```sh
 El proyecto se encuentra montado en docker hub.
-NOTA: Para estos pasos debe tener instalado "docker".
+NOTA: Para estos pasos debe tener instalado "docker desktop".
 
 1. Bajar imagen
 $ docker pull arquitectonicos3/ingsoft:1.3
 
 2. Ejecutar la imagen
 $ docker run --name xxxxx -d arquitectonicos3/ingsoft:1.3
+```
+
+### Ejecución remoto del proyecto en Kubernetes
+```sh
+El proyecto se encuentra montado en docker hub.
+NOTA: Para estos pasos debe tener instalado "docker desktop".
+
+1. Configurar el kubectl con el AKS remoto (mas información [aquí](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough))
+
+2. Ejecutar el yaml
+$ kubectl apply -f mvp-toures-balon.yml
 ```
