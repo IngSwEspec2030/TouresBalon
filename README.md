@@ -1,14 +1,48 @@
-# Toures Balón
-Somos una agencia de viajes especializada en planes turísticos donde el eje central son los espectáculos deportivos (especialmente el fútbol). Nuestra misión es ofrecer a nuestros clientes confiabilidad, organización, cumplimiento y competitividad; por la calidad de servicio que proporcionamos a nuestros clientes, logrando satisfacer en detalle todos sus ideales turísticos y deportivos, acompañados en el proceso del mejoramiento continuo y calidad de vida de quienes conformamos este equipo de trabajo.
+# Toures Balón API 
 
-A través de nuestro excelente portafolio de servicio, queremos lograr un posicionamiento y un respeto en el mercado nacional como integrador de paquetes turísticos relacionados con el deporte.)
+## Herramientas utilizadas
+```sh
+1. Java: Lenguaje de programación orientado a objetos (v11).
+2. Spring Boot: Framework basado en JavaEE para reducción de complejidad de creación.
+3. Maven: Herramienta para construcción de apps java.
+4. MySQL: Sistema gestor de base de datos.
+5. Swagger: Herramienta para documentación de los servicios.
+```
 
-Para mayor detalle sobre el _SOFTWARE PROJECT MANAGEMENT PLAN_ puede revisar nuestra [Wiki](https://github.com/IngSwEspec2030/TouresBalon/wiki)
+### Revisión del proyecto
 
-**Para revisar las entregas puede ir directamente [aquí](https://github.com/IngSwEspec2030/TouresBalon/wiki/Entregas)**
+Este proyecto se encuentra publicado en la nube mediante el proveedor Azure contenido en Kubernetes.
+Puede consultarlo la documentación de los servicios desde el siguiente enlace: [toures-balon-app](http://52.179.220.78:8080/toures-balon-api/swagger-ui/index.html?configUrl=/toures-balon-api/swagger-config)
 
-## Modelo de Negocio
-![alt text](https://github.com/jsvq85/imagenes/blob/master/canvas.png?raw=true)
+### Ejecución local del proyecto - IDE / Java
+```sh
+NOTA: Para estos pasos debe tener instalado "java" y "mvn".
 
-## Equipo Arquitéctonicos III
-![alt text](https://github.com/germancubillos/holamundo/blob/master/EquipoArquitectonicos3.jpg?raw=true)
+1. Realiza el clonado del proyecto.
+$ git clone https://github.com/IngSwEspec2030/TouresBalon.git
+$ git checkout back-end
+
+2. Bajar dependencias
+$ Desde el IDE al importarlo o mvn dependency:copy-dependencies ...
+
+3. Correr la aplicación
+-- Desde el IDE --
+$ Ejecutar el archivo TouresBalonApplication.java en la ruta src/main/java/edu/javeriana/touresbalon
+
+-- Desde Mvn
+$ mvn clean package
+$ cd target
+$ java -jar Toutes-Balon-0.0.1-SNAPSHOT.jar
+```
+
+### Ejecución local del proyecto - Docker
+```sh
+El proyecto se encuentra montado en docker hub.
+NOTA: Para estos pasos debe tener instalado "docker".
+
+1. Bajar imagen
+$ docker pull arquitectonicos3/ingsoft:1.3
+
+2. Ejecutar la imagen
+$ docker run --name xxxxx -d arquitectonicos3/ingsoft:1.3
+```
