@@ -12,7 +12,7 @@
 ### Revisión del proyecto
 
 Este proyecto se encuentra publicado en la nube mediante el proveedor Azure contenido en Kubernetes.
-Puede consultarlo la documentación de los servicios desde el siguiente enlace: [toures-balon-app](http://52.179.220.78:8080/toures-balon-api/swagger-ui/index.html?configUrl=/toures-balon-api/swagger-config)
+Puede consultarlo la documentación de los servicios desde el siguiente enlace: [toures-balon-api](http://52.179.220.78:8080/toures-balon-api/swagger-ui/index.html?configUrl=/toures-balon-api/swagger-config)
 
 ### Ejecución local del proyecto - IDE / Java
 ```sh
