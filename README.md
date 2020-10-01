@@ -12,7 +12,7 @@
 ### Revisión del proyecto
 
 Este proyecto se encuentra publicado en la nube mediante el proveedor Azure.
-Puede consultarlo mediante la URL: [enlace](http://toures-balon.azurewebsites.net/)
+Puede consultarlo mediante el siguiente enlace: [toures-balon-app](http://toures-balon.azurewebsites.net/)
 
 ### Ejecución local del proyecto
 ```sh
