@@ -10,10 +10,9 @@
 ```
 
 ### Revisión del proyecto
-```sh
+
 Este proyecto se encuentra publicado en la nube mediante el proveedor Azure.
-Puede consultarlo mediante la URL: http://toures-balon.azurewebsites.net/
-```
+Puede consultarlo mediante la URL: [enlace](http://toures-balon.azurewebsites.net/)
 
 ### Ejecución local del proyecto
 ```sh
